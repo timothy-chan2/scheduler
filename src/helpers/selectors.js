@@ -22,4 +22,19 @@ export default function getAppointmentsForDay(state, day) {
 
   //... returns an array of appointments for that day
   return resultArray;
-}
+};
+
+function getInterview(state, interview) {
+  if (interview === null) {
+    return null;
+  }
+  
+  const resultObj = {};
+
+  resultObj.student = interview.student;
+  resultObj.interviewer = state.interviewers[interview.interviewer];
+
+  return resultObj;
+};
+
+export { getInterview };
