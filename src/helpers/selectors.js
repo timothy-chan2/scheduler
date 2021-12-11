@@ -37,4 +37,30 @@ function getInterview(state, interview) {
   return resultObj;
 };
 
-export { getInterview };
+function getInterviewersForDay(state, day) {
+  let dayInterviewers = null;
+  const resultArray = [];
+  
+  if (state.days.length === 0) {
+    return [];
+  }
+
+  for (const dayOfTheWeek of state.days) {
+    if (dayOfTheWeek.name === day) {
+      dayInterviewers = dayOfTheWeek.interviewers;
+    }
+  }
+
+  if (dayInterviewers === null) {
+    return [];
+  }
+
+  for (const intID of dayInterviewers) {
+    resultArray.push(state.interviewers[intID]);
+  }
+
+  //... returns an array of appointments for that day
+  return resultArray;
+};
+
+export { getInterview, getInterviewersForDay };
