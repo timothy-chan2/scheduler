@@ -1,4 +1,4 @@
-export default function getAppointmentsForDay(state, day) {
+function getAppointmentsForDay(state, day) {
   let dayAppointments = null;
   const resultArray = [];
   
@@ -25,7 +25,7 @@ export default function getAppointmentsForDay(state, day) {
 };
 
 function getInterview(state, interview) {
-  if (interview === null) {
+  if (interview === undefined || interview === null) {
     return null;
   }
   
@@ -40,6 +40,10 @@ function getInterview(state, interview) {
 function getInterviewersForDay(state, day) {
   let dayInterviewers = null;
   const resultArray = [];
+
+  if (state.days === undefined || state.days === null) {
+    return [];
+  }
   
   if (state.days.length === 0) {
     return [];
@@ -63,4 +67,4 @@ function getInterviewersForDay(state, day) {
   return resultArray;
 };
 
-export { getInterview, getInterviewersForDay };
+export { getAppointmentsForDay, getInterview, getInterviewersForDay };
