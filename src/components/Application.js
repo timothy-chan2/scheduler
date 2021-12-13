@@ -5,7 +5,7 @@ import "components/Application.scss";
 
 import DayList from "./DayList";
 import Appointment from "components/Appointment";
-import getAppointmentsForDay, { getInterview, getInterviewersForDay } from "../helpers/selectors";
+import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "../helpers/selectors";
 
 export default function Application(props) {
   const [state, setState] = useState({
@@ -13,24 +13,6 @@ export default function Application(props) {
     days: [],
     appointments: {},
     interviewers: {}
-  });
-
-  const interviewers = getInterviewersForDay(state, state.day);
-  const dailyAppointments = getAppointmentsForDay(state, state.day);
-  const setDay = day => setState({ ...state, day });
-
-  const parsedAppointments = dailyAppointments.map(appointment => {
-    const interview = getInterview(state, appointment.interview);
-
-    return (
-      <Appointment
-        key={appointment.id}
-        id={appointment.id}
-        time={appointment.time}
-        interview={interview}
-        interviewers={interviewers}
-      />
-    );
   });
 
   useEffect(() => {
@@ -46,6 +28,44 @@ export default function Application(props) {
       }));
     });
   }, []);
+
+  const interviewers = getInterviewersForDay(state, state.day);
+  const dailyAppointments = getAppointmentsForDay(state, state.day);
+  const setDay = day => setState({ ...state, day });
+
+  function bookInterview(id, interview) {
+    console.log(id, interview);
+
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    };  
+    
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+
+    setState({
+      ...state,
+      appointments
+    });
+  };
+
+  const parsedAppointments = dailyAppointments.map(appointment => {
+    const interview = getInterview(state, appointment.interview);
+
+    return (
+      <Appointment
+        key={appointment.id}
+        id={appointment.id}
+        time={appointment.time}
+        interview={interview}
+        interviewers={interviewers}
+        bookInterview={bookInterview}
+      />
+    );
+  });
   
   return (
     <main className="layout">
