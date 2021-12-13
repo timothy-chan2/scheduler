@@ -5,6 +5,7 @@ export default function useVisualMode(initial) {
   const [history, setHistory] = useState([initial]);
 
   const transition = (newMode, replace = false) => {
+    // Pass the history array into tempHistory to avoid directly mutating history
     const tempHistory = [...history];
     setMode(newMode);
 
