@@ -48,10 +48,7 @@ export default function Application(props) {
       .then(res => setState({
         ...state,
         appointments
-      }))
-      .catch(err => {
-        console.log("Something went wrong!", err.message);
-      });
+      }));
   };
 
   function cancelInterview(id, interview) {
@@ -69,10 +66,7 @@ export default function Application(props) {
       .then(res => setState({
         ...state,
         appointments
-      }))
-      .catch(err => {
-        console.log("Something went wrong!", err.message);
-      });
+      }));
   };
 
   const parsedAppointments = dailyAppointments.map(appointment => {
