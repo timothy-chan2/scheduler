@@ -20,16 +20,16 @@ export default function useVisualMode(initial) {
   };
 
   const back = () => {
+    if (history.length > 1) {
     setHistory(prev => {
-      if (prev.length > 1) {
         const tempHistory = [...prev];
   
         tempHistory.pop();
         setHistory(tempHistory);
         setMode(tempHistory[tempHistory.length - 1]);
-      };
-    });
-  };
+      });
+    };
+  }
 
   return { mode, transition, back };
 };
