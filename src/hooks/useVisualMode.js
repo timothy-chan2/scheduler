@@ -21,7 +21,7 @@ export default function useVisualMode(initial) {
 
   const back = () => {
     if (history.length > 1) {
-    setHistory(prev => {
+      setHistory(prev => {
         const tempHistory = [...prev];
   
         tempHistory.pop();
