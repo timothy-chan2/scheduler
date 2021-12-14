@@ -46,10 +46,14 @@ export default function Application(props) {
       [id]: appointment
     };
 
-    setState({
-      ...state,
-      appointments
-    });
+    return axios.put(`/api/appointments/${id}`, {interview})
+      .then(res => setState({
+        ...state,
+        appointments
+      }))
+      .catch(err => {
+        console.log("Something went wrong!", err.message);
+      });
   };
 
   const parsedAppointments = dailyAppointments.map(appointment => {
