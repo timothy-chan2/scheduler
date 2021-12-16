@@ -1,7 +1,7 @@
 {
   "name": "scheduler",
   "version": "0.1.0",
-  "description": "A React application that allows users to book and cancel interviews",
+  "description": "A React application that allows users to book, edit, and cancel interviews",
   "contributors": [
     "Timothy Chan (timothy.chan2@mail.mcgill.ca)",
     "Lighthouse Labs"
