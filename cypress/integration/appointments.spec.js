@@ -1,8 +1,8 @@
 describe("Appointments", () => {
   beforeEach(() => {
-    cy.request("GET", "/api/debug/reset");
+    cy.request("GET", "/api/debug/reset"); // Reset the database before running each test case
     cy.visit("/");
-    cy.contains("Monday");
+    cy.contains("Monday"); // Check the page has finished loading
   });
 
   it("should book an interview", () => {
@@ -21,7 +21,7 @@ describe("Appointments", () => {
 
   it("should edit an interview", () => {
     cy.get("[alt=Edit]")
-      .click({ force: true });
+      .click({ force: true }); // Need to force since button is only visible when hovering
     cy.get("[alt='Tori Malcolm']")
       .click();
     cy.get("[data-testid=student-name-input]")
