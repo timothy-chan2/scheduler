@@ -38,18 +38,8 @@ export default function useApplicationData() {
   };
 
   function bookInterview(id, interview, isEdit) {
-    const appointment = {
-      ...state.appointments[id],
-      interview: { ...interview }
-    };  
-    
-    const appointments = {
-      ...state.appointments,
-      [id]: appointment
-    };
-
     return axios.put(`/api/appointments/${id}`, {interview})
-      .then(res => {
+      .then(() => {
         let days;
 
         if (isEdit) {
@@ -58,32 +48,49 @@ export default function useApplicationData() {
           days = updateSpots(id, -1);
         }
 
-        setState({
-          ...state,
-          appointments,
-          days
+        // Use newState to create the new appointment object
+        setState((newState) => {
+          const appointment = {
+            ...newState.appointments[id],
+            interview: { ...interview }
+          };
+
+          const appointments = {
+            ...newState.appointments,
+            [id]: appointment
+          };
+
+          setState({
+            ...newState,
+            appointments,
+            days
+          });
         });
       });
   };
   
   function cancelInterview(id, interview) {
-    const appointment = {
-      ...state.appointments[id],
-      interview
-    };  
-    
-    const appointments = {
-      ...state.appointments,
-      [id]: appointment
-    };
-
     return axios.delete(`/api/appointments/${id}`, {data: {interview}})
-      .then(res => {
+      .then(() => {
         const days = updateSpots(id, 1);
-        setState({
-          ...state,
-          appointments,
-          days
+
+        // Use newState to remove the appointment object
+        setState((newState) => {
+          const appointment = {
+            ...newState.appointments[id],
+            interview
+          };  
+          
+          const appointments = {
+            ...newState.appointments,
+            [id]: appointment
+          };
+
+          setState({
+            ...newState,
+            appointments,
+            days
+          });
         });
       });
   };
