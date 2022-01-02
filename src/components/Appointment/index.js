@@ -11,6 +11,8 @@ import Confirm from "./Confirm";
 import Error from "./Error";
 import useVisualMode from "../../hooks/useVisualMode";
 
+/* The Appointment component shows information for a single appointment
+ * time slot and what is shown depends on its current mode */
 export default function Appointment(props) {
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
