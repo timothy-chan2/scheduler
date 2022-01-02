@@ -7,6 +7,9 @@ import Appointment from "components/Appointment";
 import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "../helpers/selectors";
 import useApplicationData from "../hooks/useApplicationData";
 
+/* The Application component contains the entire app with the list of days
+ * of the week on left side of the page with the 5 appointment time slots of the selected
+ * day showing on the right side of the page */
 export default function Application(props) {
   const {
     state,
