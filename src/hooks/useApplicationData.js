@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+/* The useApplicationData function contains setDay, bookInterview, and cancelInterview
+ * function as well as the useEffect block of code all update the state. The bookInterview
+ * and cancelInterview functions also update the database */
 export default function useApplicationData() {
   const [state, setState] = useState({
     day: "Monday",
@@ -9,6 +12,7 @@ export default function useApplicationData() {
     interviewers: {}
   });
 
+  // Update to the initial state when the page first loads with data from the database
   useEffect(() => {
     Promise.all([
       axios.get("/api/days"),
