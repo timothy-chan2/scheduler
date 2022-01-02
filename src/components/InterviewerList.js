@@ -5,6 +5,8 @@ import InterviewerListItem from "./InterviewerListItem";
 
 import "./InterviewerList.scss";
 
+/* The InterviewerList component is a child of the Form component and shows a list of all
+ * the available interviewers for a particular time slot in one row */
 export default function InterviewerList(props) {
   const parsedInterviewers = props.interviewers.map(interviewer => <InterviewerListItem
     key={interviewer.id}
