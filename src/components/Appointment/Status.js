@@ -1,8 +1,8 @@
 import React from "react";
 
+/* The Status component show a relevant message in the time slot while saving
+ * or deleting an appointment is in progress */
 export default function Status(props) {
-  
-  
   return (
     <main className="appointment__card appointment__card--status">
       <img

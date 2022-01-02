@@ -1,8 +1,8 @@
 import React from "react";
 
+/* The Show component displays the student and interviewer name in the time slot
+ * along with an edit and delete button once an appointment is created or updated */
 export default function Show(props) {
-  
-  
   return (
     <main className="appointment__card appointment__card--show">
       <section className="appointment__card-left">

@@ -3,12 +3,13 @@ import React, { useState } from "react";
 import Button from "../Button";
 import InterviewerList from "../InterviewerList";
 
+/* The Form component is used when creating or editing an appointment and allows
+ * the user to enter/change the student's name and select/change the interviewer */
 export default function Form(props) {
   const [student, setStudent] = useState(props.student || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
   const [error, setError] = useState("");
 
-  
   const reset = () => {
     setStudent("");
     setInterviewer("");

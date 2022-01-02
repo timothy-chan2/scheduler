@@ -1,8 +1,8 @@
 import React from "react";
 
+/* The Error component shows when either saving or deleting the
+ * appointment can't be successfully completed */
 export default function Error(props) {
-  
-  
   return (
     <main className="appointment__card appointment__card--error">
       <section className="appointment__error-message">
