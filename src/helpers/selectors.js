@@ -1,3 +1,4 @@
+// Returns an array of appointments for that day
 function getAppointmentsForDay(state, day) {
   let dayAppointments = null;
   const resultArray = [];
@@ -20,10 +21,10 @@ function getAppointmentsForDay(state, day) {
     resultArray.push(state.appointments[aptID]);
   }
 
-  //... returns an array of appointments for that day
   return resultArray;
 };
 
+// Returns an object with the student name and interviewer
 function getInterview(state, interview) {
   if (interview === undefined || interview === null) {
     return null;
@@ -37,6 +38,7 @@ function getInterview(state, interview) {
   return resultObj;
 };
 
+// Returns an array of interviewers for that day
 function getInterviewersForDay(state, day) {
   let dayInterviewers = null;
   const resultArray = [];
@@ -63,7 +65,6 @@ function getInterviewersForDay(state, day) {
     resultArray.push(state.interviewers[intID]);
   }
 
-  //... returns an array of appointments for that day
   return resultArray;
 };
 
