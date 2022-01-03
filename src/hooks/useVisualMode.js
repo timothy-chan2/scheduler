@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+// The useVisualMode custom hook updates the mode and mode history of a time slot
 export default function useVisualMode(initial) {
   const [mode, setMode] = useState(initial);
   const [history, setHistory] = useState([initial]);
